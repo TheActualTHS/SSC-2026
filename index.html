@@ -2,97 +2,146 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EduSaveTube</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SSC 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #011C40;
-      color: white;
+    :root {
+      --bg: #011C40;
+      --fg: #EEE;
+      --card-bg: #03306F;
     }
-
-    header {
-      background-color: #0078FF;
-      padding: 1.5rem 2rem;
-      text-align: center;
+    [data-theme="light"] {
+      --bg: #F0F4F8;
+      --fg: #222;
+      --card-bg: #FFFFFF;
     }
-
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-      color: white;
-    }
-
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem;
-    }
-
-    .input-section {
-      background-color: white;
-      padding: 2rem;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 600px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .input-section h2 {
-      color: #011C40;
-      margin-bottom: 1rem;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 1rem;
-      font-size: 1rem;
-      border: 2px solid #0078FF;
-      border-radius: 5px;
-      margin-bottom: 1rem;
-    }
-
-    button {
-      background-color: #0078FF;
-      color: white;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #005FCC;
-    }
-
-    footer {
-      margin-top: 4rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--fg); padding:1rem; transition:background .3s, color .3s; }
+    header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; }
+    header h1 { font-size:2rem; }
+    .toggle-btn { padding:0.5rem 1rem; cursor:pointer; background:var(--card-bg); border:none; color:var(--fg); border-radius:5px; }
+    section { margin-bottom:2rem; }
+    section h2 { border-bottom:2px solid var(--fg); margin-bottom:1rem; padding-bottom:0.5rem; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1rem; }
+    .card { background:var(--card-bg); border-radius:10px; padding:1rem; overflow:hidden; }
+    .card iframe { width:100%; height:180px; border:none; border-radius:5px; }
+    .card h3 { font-size:1.1rem; margin:0.5rem 0; }
+    #add-video { background:var(--card-bg); padding:1rem; border-radius:10px; max-width:600px; margin:auto 0 2rem; }
+    #add-video input, #add-video select { width:100%; padding:0.5rem; margin:0.5rem 0; border:none; border-radius:5px; }
+    #add-video button { width:100%; padding:0.7rem; border:none; border-radius:5px; background:#0078FF; color:white; font-weight:600; cursor:pointer; }
+    footer { text-align:center; padding:1rem 0; font-size:0.9rem; border-top:1px solid var(--fg); }
   </style>
 </head>
-<body>
+<body data-theme="dark">
+
   <header>
-    <h1>EduSaveTube</h1>
+    <h1>SSC 2026 <small style="font-size:0.7rem;">Focused learning with zero distractions</small></h1>
+    <button class="toggle-btn" onclick="toggleTheme()">Toggle Light/Dark</button>
   </header>
 
-  <main>
-    <div class="input-section">
-      <h2>Enter YouTube Video URL</h2>
-      <input type="text" placeholder="https://www.youtube.com/watch?v=..." />
-      <button onclick="alert('This would trigger the download process')">Save Video</button>
-    </div>
-  </main>
+  <section id="about">
+    <h2>About</h2>
+    <p>SSC 2026 is dedicated to offering a distraction-free study platform. Curated videos for each subject help you focus and effectively prepare for your exams.</p>
+  </section>
+
+  <!-- Subject Sections -->
+  <div id="subjects">
+    <!-- Repeated for each -->
+    <section id="Bangla1">
+      <h2>Bangla 1st Paper</h2><div class="grid"></div>
+    </section>
+    <section id="Bangla2">
+      <h2>Bangla 2nd Paper</h2><div class="grid"></div>
+    </section>
+    <section id="English1">
+      <h2>English 1st Paper</h2><div class="grid"></div>
+    </section>
+    <section id="English2">
+      <h2>English 2nd Paper</h2><div class="grid"></div>
+    </section>
+    <section id="GeneralMath">
+      <h2>General Math</h2><div class="grid"></div>
+    </section>
+    <section id="HigherMath">
+      <h2>Higher Math</h2><div class="grid"></div>
+    </section>
+    <section id="Physics">
+      <h2>Physics</h2><div class="grid"></div>
+    </section>
+    <section id="Chemistry">
+      <h2>Chemistry</h2><div class="grid"></div>
+    </section>
+    <section id="Biology">
+      <h2>Biology</h2><div class="grid"></div>
+    </section>
+    <section id="BGS">
+      <h2>Bangladesh & Global Studies</h2><div class="grid"></div>
+    </section>
+    <section id="Islam">
+      <h2>Islam & Moral Ethics</h2><div class="grid"></div>
+    </section>
+    <section id="ICT">
+      <h2>ICT</h2><div class="grid"></div>
+    </section>
+  </div>
+
+  <!-- Add Video Form -->
+  <section id="add-video">
+    <h2>Add Video</h2>
+    <input type="url" id="videoURL" placeholder="YouTube video URL" />
+    <select id="subjectSelect">
+      <option value="">Select Subject</option>
+      <option value="Bangla1">Bangla 1st Paper</option>
+      <option value="Bangla2">Bangla 2nd Paper</option>
+      <option value="English1">English 1st Paper</option>
+      <option value="English2">English 2nd Paper</option>
+      <option value="GeneralMath">General Math</option>
+      <option value="HigherMath">Higher Math</option>
+      <option value="Physics">Physics</option>
+      <option value="Chemistry">Chemistry</option>
+      <option value="Biology">Biology</option>
+      <option value="BGS">Bangladesh & Global Studies</option>
+      <option value="Islam">Islam & Moral Ethics</option>
+      <option value="ICT">ICT</option>
+    </select>
+    <button onclick="addVideo()">Add Video</button>
+  </section>
 
   <footer>
-    © 2025 EduSaveTube. Built for educational use only.
+    All rights reserved by TheActualTHS – Tahmidul Hasan Sayem
   </footer>
+
+  <script>
+    function toggleTheme() {
+      const el = document.body;
+      el.dataset.theme = (el.dataset.theme==='dark')?'light':'dark';
+    }
+
+    async function addVideo() {
+      const url = document.getElementById('videoURL').value.trim();
+      const subj = document.getElementById('subjectSelect').value;
+      if (!url || !subj) { alert('URL & Subject required'); return; }
+      try {
+        const o = `https://www.youtube.com/oembed?url=${encodeURIComponent(url)}&format=json`;
+        const res = await fetch(o);
+        if (!res.ok) throw new Error('Invalid YouTube URL');
+        const data = await res.json();
+        const container = document.querySelector(`#${subj} .grid`);
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          ${data.html}
+          <h3>${data.title}</h3>
+          <p style="opacity:.8; font-size:.9rem">${data.author_name}</p>`;
+        container.prepend(card);
+        document.getElementById('videoURL').value = '';
+      } catch(err) {
+        alert('Error: '+err.message);
+      }
+    }
+  </script>
+
 </body>
 </html>
+
