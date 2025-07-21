@@ -1,147 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SSC 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <style>
-    :root {
-      --bg: #011C40;
-      --fg: #EEE;
-      --card-bg: #03306F;
+    .dark-mode {
+      background-color: #111827;
+      color: white;
     }
-    [data-theme="light"] {
-      --bg: #F0F4F8;
-      --fg: #222;
-      --card-bg: #FFFFFF;
+    .video-card {
+      background: #1e293b;
     }
-    * { box-sizing: border-box; margin:0; padding:0; }
-    body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--fg); padding:1rem; transition:background .3s, color .3s; }
-    header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; }
-    header h1 { font-size:2rem; }
-    .toggle-btn { padding:0.5rem 1rem; cursor:pointer; background:var(--card-bg); border:none; color:var(--fg); border-radius:5px; }
-    section { margin-bottom:2rem; }
-    section h2 { border-bottom:2px solid var(--fg); margin-bottom:1rem; padding-bottom:0.5rem; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1rem; }
-    .card { background:var(--card-bg); border-radius:10px; padding:1rem; overflow:hidden; }
-    .card iframe { width:100%; height:180px; border:none; border-radius:5px; }
-    .card h3 { font-size:1.1rem; margin:0.5rem 0; }
-    #add-video { background:var(--card-bg); padding:1rem; border-radius:10px; max-width:600px; margin:auto 0 2rem; }
-    #add-video input, #add-video select { width:100%; padding:0.5rem; margin:0.5rem 0; border:none; border-radius:5px; }
-    #add-video button { width:100%; padding:0.7rem; border:none; border-radius:5px; background:#0078FF; color:white; font-weight:600; cursor:pointer; }
-    footer { text-align:center; padding:1rem 0; font-size:0.9rem; border-top:1px solid var(--fg); }
   </style>
 </head>
-<body data-theme="dark">
 
-  <header>
-    <h1>SSC 2026 <small style="font-size:0.7rem;">Focused learning with zero distractions</small></h1>
-    <button class="toggle-btn" onclick="toggleTheme()">Toggle Light/Dark</button>
+<body class="transition-all duration-300 bg-gray-50 dark-mode">
+  <header class="p-6 flex justify-between items-center bg-gradient-to-r from-blue-900 to-indigo-800 text-white">
+    <h1 class="text-2xl font-bold">SSC 2026</h1>
+    <button id="toggleMode" class="bg-gray-800 px-4 py-1 rounded text-white">Toggle Mode</button>
   </header>
 
-  <section id="about">
-    <h2>About</h2>
-    <p>SSC 2026 is dedicated to offering a distraction-free study platform. Curated videos for each subject help you focus and effectively prepare for your exams.</p>
+  <section class="p-6 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold mb-2">About</h2>
+    <p class="mb-6 text-lg">Our mission is to organize subject-wise class content in a distraction-free YouTube-style experience to help SSC 2026 students stay focused and learn effectively.</p>
+
+    <div id="subjectsContainer" class="space-y-10"></div>
   </section>
 
-  <!-- Subject Sections -->
-  <div id="subjects">
-    <!-- Repeated for each -->
-    <section id="Bangla1">
-      <h2>Bangla 1st Paper</h2><div class="grid"></div>
-    </section>
-    <section id="Bangla2">
-      <h2>Bangla 2nd Paper</h2><div class="grid"></div>
-    </section>
-    <section id="English1">
-      <h2>English 1st Paper</h2><div class="grid"></div>
-    </section>
-    <section id="English2">
-      <h2>English 2nd Paper</h2><div class="grid"></div>
-    </section>
-    <section id="GeneralMath">
-      <h2>General Math</h2><div class="grid"></div>
-    </section>
-    <section id="HigherMath">
-      <h2>Higher Math</h2><div class="grid"></div>
-    </section>
-    <section id="Physics">
-      <h2>Physics</h2><div class="grid"></div>
-    </section>
-    <section id="Chemistry">
-      <h2>Chemistry</h2><div class="grid"></div>
-    </section>
-    <section id="Biology">
-      <h2>Biology</h2><div class="grid"></div>
-    </section>
-    <section id="BGS">
-      <h2>Bangladesh & Global Studies</h2><div class="grid"></div>
-    </section>
-    <section id="Islam">
-      <h2>Islam & Moral Ethics</h2><div class="grid"></div>
-    </section>
-    <section id="ICT">
-      <h2>ICT</h2><div class="grid"></div>
-    </section>
-  </div>
-
-  <!-- Add Video Form -->
-  <section id="add-video">
-    <h2>Add Video</h2>
-    <input type="url" id="videoURL" placeholder="YouTube video URL" />
-    <select id="subjectSelect">
-      <option value="">Select Subject</option>
-      <option value="Bangla1">Bangla 1st Paper</option>
-      <option value="Bangla2">Bangla 2nd Paper</option>
-      <option value="English1">English 1st Paper</option>
-      <option value="English2">English 2nd Paper</option>
-      <option value="GeneralMath">General Math</option>
-      <option value="HigherMath">Higher Math</option>
-      <option value="Physics">Physics</option>
-      <option value="Chemistry">Chemistry</option>
-      <option value="Biology">Biology</option>
-      <option value="BGS">Bangladesh & Global Studies</option>
-      <option value="Islam">Islam & Moral Ethics</option>
-      <option value="ICT">ICT</option>
-    </select>
-    <button onclick="addVideo()">Add Video</button>
-  </section>
-
-  <footer>
-    All rights reserved by TheActualTHS – Tahmidul Hasan Sayem
+  <footer class="text-center text-sm py-4 bg-gray-900 text-white">
+    All rights reserved by TheActualTHS - Tahmidul Hasan Sayen
   </footer>
 
   <script>
-    function toggleTheme() {
-      const el = document.body;
-      el.dataset.theme = (el.dataset.theme==='dark')?'light':'dark';
+    const modeBtn = document.getElementById("toggleMode");
+    modeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
+
+    const subjects = [
+      "Bangla 1st Paper", "Bangla 2nd Paper", "English 1st Paper", "English 2nd Paper",
+      "General Math", "Higher Math", "Physics", "Chemistry", "Biology",
+      "Bangladesh Global Studies", "Islam & Moral Ethics", "ICT"
+    ];
+
+    async function loadVideos() {
+      const res = await fetch("videos.json");
+      const data = await res.json();
+
+      const container = document.getElementById("subjectsContainer");
+      subjects.forEach(sub => {
+        const section = document.createElement("div");
+        section.innerHTML = `<h3 class='text-xl font-bold mb-3'>${sub}</h3><div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4' id='${sub}'></div>`;
+        container.appendChild(section);
+
+        const videos = data[sub] || [];
+        videos.forEach(video => {
+          const videoId = video.split("v=")[1];
+          const card = document.createElement("div");
+          card.className = "video-card rounded overflow-hidden shadow-lg text-white";
+          card.innerHTML = `
+            <iframe class="w-full h-48" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
+          `;
+          document.getElementById(sub).appendChild(card);
+        });
+      });
     }
 
-    async function addVideo() {
-      const url = document.getElementById('videoURL').value.trim();
-      const subj = document.getElementById('subjectSelect').value;
-      if (!url || !subj) { alert('URL & Subject required'); return; }
-      try {
-        const o = `https://www.youtube.com/oembed?url=${encodeURIComponent(url)}&format=json`;
-        const res = await fetch(o);
-        if (!res.ok) throw new Error('Invalid YouTube URL');
-        const data = await res.json();
-        const container = document.querySelector(`#${subj} .grid`);
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-          ${data.html}
-          <h3>${data.title}</h3>
-          <p style="opacity:.8; font-size:.9rem">${data.author_name}</p>`;
-        container.prepend(card);
-        document.getElementById('videoURL').value = '';
-      } catch(err) {
-        alert('Error: '+err.message);
-      }
-    }
+    loadVideos();
   </script>
-
 </body>
+
 </html>
 
+   
+   
