@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduSaveTube</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #011C40;
+      color: white;
+    }
+
+    header {
+      background-color: #0078FF;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: white;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .input-section {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .input-section h2 {
+      color: #011C40;
+      margin-bottom: 1rem;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      border: 2px solid #0078FF;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      background-color: #0078FF;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005FCC;
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>EduSaveTube</h1>
+  </header>
+
+  <main>
+    <div class="input-section">
+      <h2>Enter YouTube Video URL</h2>
+      <input type="text" placeholder="https://www.youtube.com/watch?v=..." />
+      <button onclick="alert('This would trigger the download process')">Save Video</button>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 EduSaveTube. Built for educational use only.
+  </footer>
+</body>
+</html>
