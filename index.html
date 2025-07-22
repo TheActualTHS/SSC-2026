@@ -5,65 +5,69 @@
   <title>SSC 2026 Online Classes</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-  :root{--bg:#040F2D;--fg:#FFF;--accent:#1550F2;--card:#1A2340}
-  [data-theme="light"]{--bg:#fff;--fg:#111;--card:#f5f5f5}
-  *,*::before,*::after{box-sizing:border-box}
-  body{margin:0;font-family:'Poppins';background:var(--bg);color:var(--fg);transition:.3s}
-  .toggle{position:fixed;top:1rem;right:1rem;background:var(--accent);color:#fff;border:none;padding:.5rem 1rem;border-radius:5px;cursor:pointer;z-index:200}
-  header{display:flex;flex-direction:column;align-items:center;justify-content:center;height:60vh;text-align:center;padding:1rem}
-  header h1{font-size:3rem;margin-bottom:.5rem}
-  header p.subtitle{font-size:1.3rem;opacity:.85;margin-bottom:1rem}
-  header p.blurb{max-width:800px;line-height:1.6;opacity:.9}
-  nav{position:sticky;top:0;display:flex;justify-content:center;gap:1rem;padding:.5rem;background:var(--bg);z-index:100}
-  nav a{color:var(--fg);text-decoration:none;font-weight:600}
-  .stats{display:flex;justify-content:center;gap:2rem;margin-top:1rem;flex-wrap:wrap}
-  .stat{background:var(--card);padding:1rem 2rem;border-radius:8px;text-align:center}
-  .stat h3{margin:0;font-size:1.5rem}
-  .stat p{margin:0;opacity:.8;font-size:.9rem}
-  main{max-width:1200px;margin:2rem auto;padding:0 1rem}
-  section{margin-bottom:3rem}
-  section h2{font-size:1.6rem;border-left:4px solid var(--accent);padding-left:.5rem;margin-bottom:1rem}
-  .grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-  .card{background:var(--card);border-radius:10px;overflow:hidden;box-shadow:0 4px 8px rgba(0,0,0,.4);transition:transform .2s;cursor:pointer;display:flex;flex-direction:column}
-  .card:hover{transform:translateY(-5px);box-shadow:0 8px 16px rgba(0,0,0,.7)}
-  .card img{width:100%;height:140px;object-fit:cover}
-  .card-content{padding:1rem;flex:1;display:flex;flex-direction:column;justify-content:space-between}
-  .card-content h3{font-size:1.1rem;margin:0 0 .5rem}
-  .card-content p{opacity:.85;margin:0;font-size:.9rem}
-  footer{text-align:center;padding:2rem 1rem;font-size:.9rem;opacity:.7}
-  .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);justify-content:center;align-items:center;z-index:300}
-  .modal iframe{width:90%;max-width:800px;height:50vh;border:none}
-  .modal .close{position:absolute;top:1rem;right:1rem;font-size:2rem;color:#fff;cursor:pointer}
-  @media (max-width:600px){header h1{font-size:2.2rem}header p.subtitle{font-size:1.1rem}}
+    :root{--bg:#040F2D;--fg:#FFF;--accent:#1550F2;--card:#1A2340}
+    [data-theme="light"]{--bg:#fff;--fg:#111;--card:#f5f5f5}
+    *,*::before,*::after{box-sizing:border-box}
+    body{margin:0;font-family:'Poppins';background:var(--bg);color:var(--fg);transition:.3s}
+    .toggle{position:fixed;top:1rem;right:1rem;background:var(--accent);color:#fff;padding:.5rem 1rem;border:none;border-radius:5px;cursor:pointer;z-index:200}
+    header{display:flex;flex-direction:column;align-items:center;justify-content:center;height:60vh;text-align:center;padding:1rem}
+    header h1{font-size:3rem;margin-bottom:.5rem}
+    header p.subtitle{font-size:1.3rem;opacity:.85;margin-bottom:1rem}
+    header p.blurb{max-width:800px;line-height:1.6;opacity:.9}
+    nav{position:sticky;top:0;display:flex;justify-content:center;gap:.75rem;padding:.5rem;background:var(--bg);z-index:100}
+    nav a{color:var(--fg);text-decoration:none;font-weight:600}
+    .stats{display:flex;justify-content:center;gap:2rem;margin-top:1rem;flex-wrap:wrap}
+    .stat{background:var(--card);padding:1rem 2rem;border-radius:8px;text-align:center}
+    .stat h3{margin:0;font-size:1.5rem}
+    .stat p{margin:0;opacity:.8;font-size:.9rem}
+    main{max-width:1200px;margin:2rem auto;padding:0 1rem}
+    section{margin-bottom:3rem}
+    section h2{font-size:1.6rem;border-left:4px solid var(--accent);padding-left:.5rem;margin-bottom:1rem}
+    .grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .card{background:var(--card);border-radius:10px;overflow:hidden;box-shadow:0 4px 8px rgba(0,0,0,.4);transition:transform .2s;cursor:pointer;display:flex;flex-direction:column}
+    .card:hover{transform:translateY(-5px);box-shadow:0 8px 16px rgba(0,0,0,.7)}
+    .card img{width:100%;height:140px;object-fit:cover}
+    .card-content{padding:1rem;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+    .card-content h3{font-size:1.1rem;margin:0 0 .5rem}
+    .card-content p{opacity:.85;margin:0;font-size:.9rem}
+    footer{text-align:center;padding:2rem 1rem;font-size:.9rem;opacity:.7}
+    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);justify-content:center;align-items:center;z-index:300}
+    .modal iframe{width:90%;max-width:800px;height:50vh;border:none}
+    .modal .close{position:absolute;top:1rem;right:1rem;font-size:2rem;color:#fff;cursor:pointer}
+    @media (max-width:600px){header h1{font-size:2.2rem}header p.subtitle{font-size:1.1rem}}
   </style>
 </head>
 <body data-theme="dark">
   <button class="toggle" onclick="toggleTheme()">Toggle Theme</button>
+
   <header>
     <h1>SSC 2026 Online Classes</h1>
     <p class="subtitle">Your Academic Space. Just Learning.</p>
-    <p class="blurb">Welcome Dear SSC 2026 Batch – your dedicated academic space, free from distractions and designed for focused learning by Tahmidul Hasan Sayem. I believe education deserves your full attention, which is why I’ve created a platform that puts your classes front and center — no ads, no clutter, no endless rabbit holes. Whether you're watching recorded lectures, revisiting tough topics, or following a structured curriculum, this is your personal corner of the internet built just for one thing: learning. Stay on track. Stay focused. Just learn.</p>
+    <p class="blurb">
+      Welcome Dear SSC 2026 Batch – your dedicated academic space, free from distractions and designed for focused learning by Tahmidul Hasan Sayem. I believe education deserves your full attention, which is why I’ve created a platform that puts your classes front and center — no ads, no clutter, no endless rabbit holes. Whether you're watching recorded lectures, revisiting tough topics, or following a structured curriculum, this is your personal corner of the internet built just for one thing: learning. Stay on track. Stay focused. Just learn.
+    </p>
     <div class="stats">
       <div class="stat"><h3>22+</h3><p>General Math</p></div>
       <div class="stat"><h3>16+</h3><p>Higher Math</p></div>
       <div class="stat"><h3>12</h3><p>Subjects</p></div>
     </div>
   </header>
+
   <nav>
-    <a href="#generalMath">General Math</a><a href="#higherMath">Higher Math</a>
-    <a href="#bangla1">Bangla 1</a><a href="#bangla2">Bangla 2</a>
-    <a href="#english1">English 1</a><a href="#english2">English 2</a>
+    <a href="#generalMath">Gen Math</a><a href="#higherMath">High Math</a>
+    <a href="#bangla1">Bangla 1</a><a href="#bangla2">Bangla 2</a>
+    <a href="#english1">English 1</a><a href="#english2">English 2</a>
     <a href="#physics">Physics</a><a href="#chemistry">Chemistry</a>
     <a href="#biology">Biology</a><a href="#bgs">BGS</a>
     <a href="#islam">Islam</a><a href="#ict">ICT</a>
   </nav>
+
   <main>
     <template id="cardTpl">
-      <div class="card"><img src="" alt="thumb"><div class="card-content"><h3></h3><p></p></div></div>
+      <div class="card"><img src="" alt=""><div class="card-content"><h3></h3><p></p></div></div>
     </template>
     <section id="generalMath"><h2>General Math</h2><div class="grid"></div></section>
     <section id="higherMath"><h2>Higher Math</h2><div class="grid"></div></section>
-    <!-- Other 10 subjects -->
     <section id="bangla1"><h2>Bangla 1st Paper</h2><div class="grid"><!-- hook --></div></section>
     <section id="bangla2"><h2>Bangla 2nd Paper</h2><div class="grid"><!-- hook --></div></section>
     <section id="english1"><h2>English 1st Paper</h2><div class="grid"><!-- hook --></div></section>
@@ -75,44 +79,66 @@
     <section id="islam"><h2>Islam & Moral Ethics</h2><div class="grid"><!-- hook --></div></section>
     <section id="ict"><h2>ICT</h2><div class="grid"><!-- hook --></div></section>
   </main>
+
   <footer>© 2025–2026 All Rights Reserved by Tahmidul Hasan Sayem</footer>
-  <div class="modal" id="videoModal"><span class="close" onclick="closeModal()">×</span><iframe></iframe></div>
+
+  <div class="modal" id="videoModal">
+    <span class="close" onclick="closeModal()">×</span>
+    <iframe></iframe>
+  </div>
+
   <script>
-    function toggleTheme(){document.body.dataset.theme = document.body.dataset.theme==='dark'?'light':'dark'}
-    document.body.addEventListener('click', e=>{
-      const c = e.target.closest('.card');
-      if(c){openModal(c.dataset.url);}
+    function toggleTheme() {
+      document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+    }
+    document.body.addEventListener('click', e => {
+      const card = e.target.closest('.card');
+      if (card && card.dataset.url) openModal(card.dataset.url);
     });
-    function openModal(u){
-      const id = u.match(/(?:youtu.be\/|v=)([^?&]+)/)[1];
-      document.querySelector('#videoModal iframe').src=`https://www.youtube.com/embed/${id}?autoplay=1`;
-      document.getElementById('videoModal').style.display='flex';
+    function openModal(url) {
+      const id = url.match(/(?:youtu\.be\/|v=)([^?&]+)/)[1];
+      const iframe = document.querySelector('#videoModal iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1`;
+      document.getElementById('videoModal').style.display = 'flex';
     }
-    function closeModal(){
-      document.getElementById('videoModal').style.display='none';
-      document.querySelector('#videoModal iframe').src='';
+    function closeModal() {
+      document.getElementById('videoModal').style.display = 'none';
+      document.querySelector('#videoModal iframe').src = '';
     }
+
     const subjects = {
-      generalMath:[ /* 22 URLs here */ ],
-      higherMath:[ /* 16 URLs here */ ]
+      generalMath: [
+        "https://youtu.be/nfwZ7derrr4",
+        /* remaining 21 URLs... */
+      ],
+      higherMath: [
+        "https://youtu.be/ERVCTT0vYb4",
+        /* remaining 15 URLs... */
+      ]
     };
-    async function load(id){
-      const g = document.querySelector(`#${id} .grid`);
-      for(const u of subjects[id]){
-        const d = await fetch(`https://noembed.com/embed?url=${encodeURIComponent(u)}`).then(r=>r.json());
-        const c = document.getElementById('cardTpl').content.cloneNode(true);
-        c.querySelector('img').src = d.thumbnail_url;
-        c.querySelector('h3').textContent = d.title;
-        c.querySelector('p').textContent = d.provider_name;
-        c.querySelector('.card').dataset.url = u;
-        g.append(c);
+
+    async function loadVideos(id, urls) {
+      const grid = document.getElementById(id).querySelector('.grid');
+      for (const u of urls) {
+        const info = await fetch(`https://noembed.com/embed?url=${encodeURIComponent(u)}`)
+                              .then(r => r.json());
+        const card = document.getElementById('cardTpl').content.cloneNode(true);
+        card.querySelector('img').src = info.thumbnail_url;
+        card.querySelector('h3').textContent = info.title;
+        card.querySelector('p').textContent = info.author_name;
+        card.querySelector('.card').dataset.url = u;
+        grid.appendChild(card);
       }
     }
-    load('generalMath'); load('higherMath');
+    loadVideos('generalMath', subjects.generalMath);
+    loadVideos('higherMath', subjects.higherMath);
   </script>
 </body>
 </html>
 
+  
+ 
+ 
     
 
 
