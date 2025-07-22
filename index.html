@@ -1,80 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SSC 2026</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SSC 2026 Online Classes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    .dark-mode {
-      background-color: #111827;
-      color: white;
-    }
-    .video-card {
-      background: #1e293b;
-    }
+    :root{--bg:#040F2D;--fg:#FFF;--accent:#1550F2;--card:#1A2340}
+    [data-theme="light"]{--bg:#F5F5F5;--fg:#111;--card:#FFF}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--fg);transition:0.3s}
+    .toggle{position:fixed;top:1rem;right:1rem;background:var(--accent);color:#fff;border:none;padding:.5rem 1rem;border-radius:5px;cursor:pointer;}
+    header{padding:2rem 1rem;text-align:center;}
+    header h1{font-size:2.5rem;margin-bottom:.5rem;}
+    header p{opacity:.85;max-width:700px;margin:0 auto 1rem;line-height:1.6;}
+    main{max-width:1200px;margin:auto;padding:1rem;}
+    section{margin:2rem 0;}
+    section h2{margin-bottom:1rem;border-left:4px solid var(--accent);padding-left:.5rem;}
+    .grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+    .card{background:var(--card);border-radius:8px;overflow:hidden;box-shadow:0 4px 8px rgba(0,0,0,.3);transition:0.2s}
+    .card:hover{transform:translateY(-5px);box-shadow:0 8px 16px rgba(0,0,0,.5)}
+    .card img{width:100%;height:auto;display:block}
+    .content{padding:.75rem;}
+    .content h3{font-size:1.1rem;margin:0 0 .5rem}
+    .content p{opacity:.85;margin:0;font-size:.9rem}
+    footer{text-align:center;padding:2rem 0;font-size:.9rem;opacity:.7;}
   </style>
 </head>
-
-<body class="transition-all duration-300 bg-gray-50 dark-mode">
-  <header class="p-6 flex justify-between items-center bg-gradient-to-r from-blue-900 to-indigo-800 text-white">
-    <h1 class="text-2xl font-bold">SSC 2026</h1>
-    <button id="toggleMode" class="bg-gray-800 px-4 py-1 rounded text-white">Toggle Mode</button>
+<body data-theme="dark">
+  <button class="toggle" onclick="toggleTheme()">Toggle Theme</button>
+  <header>
+    <h1>SSC 2026 Online Classes</h1>
+    <p>Your Academic Space. Just Learning.</p>
+    <p>Welcome, SSC 2026 Batch — your dedicated academic space, free from distractions and designed for focused learning by Tahmidul Hasan Sayem...</p>
   </header>
+  <main>
+    <!-- Sections -->
+    <template id="card-template">
+      <div class="card">
+        <a href="" target="_blank"><img src="" alt=""></a>
+        <div class="content"><h3></h3><p></p></div>
+      </div>
+    </template>
 
-  <section class="p-6 max-w-5xl mx-auto">
-    <h2 class="text-3xl font-bold mb-2">About</h2>
-    <p class="mb-6 text-lg">Our mission is to organize subject-wise class content in a distraction-free YouTube-style experience to help SSC 2026 students stay focused and learn effectively.</p>
-
-    <div id="subjectsContainer" class="space-y-10"></div>
-  </section>
-
-  <footer class="text-center text-sm py-4 bg-gray-900 text-white">
-    All rights reserved by TheActualTHS - Tahmidul Hasan Sayen
-  </footer>
+    <!-- Subjects -->
+    <section id="general-math"><h2>General Math</h2><div class="grid"></div></section>
+    <section id="higher-math"><h2>Higher Math</h2><div class="grid"></div></section>
+    <section id="bangla1"><h2>Bangla 1st Paper</h2><div class="grid"><!-- backend-hook --></div></section>
+    <section id="bangla2"><h2>Bangla 2nd Paper</h2><div class="grid"><!-- backend-hook --></div></section>
+    <section id="english1"><h2>English 1st Paper</h2><div class="grid"><!-- backend-hook --></div></section>
+    <section id="english2"><h2>English 2nd Paper</h2><div class="grid"><!-- backend-hook --></div></section>
+    <section id="physics"><h2>Physics</h2><div class="grid"><!-- backend-hook --></div></section>
+    <section id="chemistry"><h2>Chemistry</h2><div class="grid"><!-- backend-hook --></div></section>
+    <section id="biology"><h2>Biology</h2><div class="grid"><!-- backend-hook --></div></section>
+    <section id="bgs"><h2>Bangladesh & Global Studies</h2><div class="grid"><!-- backend-hook --></div></section>
+    <section id="islam"><h2>Islam & Moral Ethics</h2><div class="grid"><!-- backend-hook --></div></section>
+    <section id="ict"><h2>ICT</h2><div class="grid"><!-- backend-hook --></div></section>
+  </main>
+  <footer>© 2025–2026 All Rights Reserved by Tahmidul Hasan Sayem</footer>
 
   <script>
-    const modeBtn = document.getElementById("toggleMode");
-    modeBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-    });
+    function toggleTheme(){document.body.dataset.theme=document.body.dataset.theme==='dark'?'light':'dark'}
 
-    const subjects = [
-      "Bangla 1st Paper", "Bangla 2nd Paper", "English 1st Paper", "English 2nd Paper",
-      "General Math", "Higher Math", "Physics", "Chemistry", "Biology",
-      "Bangladesh Global Studies", "Islam & Moral Ethics", "ICT"
-    ];
+    const subjects = {
+      "general-math": [
+        "https://youtu.be/nfwZ7derrr4",
+        // etc… total 22 URLs
+      ],
+      "higher-math": [
+        "https://youtu.be/ERVCTT0vYb4",
+        // etc… total 16 URLs
+      ]
+    };
 
-    async function loadVideos() {
-      const res = await fetch("videos.json");
-      const data = await res.json();
+    const tpl = document.getElementById('card-template');
 
-      const container = document.getElementById("subjectsContainer");
-      subjects.forEach(sub => {
-        const section = document.createElement("div");
-        section.innerHTML = `<h3 class='text-xl font-bold mb-3'>${sub}</h3><div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4' id='${sub}'></div>`;
-        container.appendChild(section);
-
-        const videos = data[sub] || [];
-        videos.forEach(video => {
-          const videoId = video.split("v=")[1];
-          const card = document.createElement("div");
-          card.className = "video-card rounded overflow-hidden shadow-lg text-white";
-          card.innerHTML = `
-            <iframe class="w-full h-48" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
-          `;
-          document.getElementById(sub).appendChild(card);
-        });
+    subjects && Object.entries(subjects).forEach(([id, urls])=>{
+      const grid = document.querySelector(#${id} .grid);
+      urls.forEach(url=>{
+        const vid = url.split(/youtu.be\/|v=/)[1].split(/[?&]/)[0];
+        const thumb = https://img.youtube.com/vi/${vid}/hqdefault.jpg;
+        const card = tpl.content.firstElementChild.cloneNode(true);
+        card.querySelector('a').href = https://www.youtube.com/watch?v=${vid};
+        card.querySelector('img').src = thumb;
+        card.querySelector('h3').textContent = Lecture: ${vid};
+        card.querySelector('p').textContent = Topic placeholder;
+        grid.append(card);
       });
-    }
-
-    loadVideos();
+    });
   </script>
 </body>
-
 </html>
-
-   
-   
