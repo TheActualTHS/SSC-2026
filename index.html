@@ -1,93 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SSC 2026 Online Classes</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SSC 2026 Online Classes</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#040F2D;--fg:#FFF;--accent:#1550F2;--card:#1A2340}
-    [data-theme="light"]{--bg:#F5F5F5;--fg:#111;--card:#FFF}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--fg);transition:0.3s}
-    .toggle{position:fixed;top:1rem;right:1rem;background:var(--accent);color:#fff;border:none;padding:.5rem 1rem;border-radius:5px;cursor:pointer;}
-    header{padding:2rem 1rem;text-align:center;}
-    header h1{font-size:2.5rem;margin-bottom:.5rem;}
-    header p{opacity:.85;max-width:700px;margin:0 auto 1rem;line-height:1.6;}
-    main{max-width:1200px;margin:auto;padding:1rem;}
-    section{margin:2rem 0;}
-    section h2{margin-bottom:1rem;border-left:4px solid var(--accent);padding-left:.5rem;}
-    .grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-    .card{background:var(--card);border-radius:8px;overflow:hidden;box-shadow:0 4px 8px rgba(0,0,0,.3);transition:0.2s}
-    .card:hover{transform:translateY(-5px);box-shadow:0 8px 16px rgba(0,0,0,.5)}
-    .card img{width:100%;height:auto;display:block}
-    .content{padding:.75rem;}
-    .content h3{font-size:1.1rem;margin:0 0 .5rem}
-    .content p{opacity:.85;margin:0;font-size:.9rem}
-    footer{text-align:center;padding:2rem 0;font-size:.9rem;opacity:.7;}
+    :root {
+      --bg: #040F2D; --fg: #FFF; --accent: #1550F2; --card: #1A2340;
+    }
+    [data-theme="light"] {
+      --bg: #FFF; --fg: #111; --card: #F5F5F5;
+    }
+    body { margin:0; font-family:'Poppins'; background:var(--bg); color:var(--fg); transition: .3s; }
+    nav { position:fixed; width:100%; background:var(--bg); z-index:100; padding:.5rem; text-align:center; }
+    nav a { color:var(--fg); margin:0 .5rem; text-decoration:none; font-weight:600; }
+    .toggle { position:fixed; top:1rem; right:1rem; background:var(--accent); color:#fff; border:none; padding:.5rem 1rem; border-radius:5px; cursor:pointer; z-index:101; }
+    header { display:flex; flex-direction:column; justify-content:center; align-items:center; height:60vh; text-align:center; padding:1rem; }
+    header h1 { font-size:3rem; margin-bottom:.5rem; }
+    header p.subtitle { font-size:1.3rem; opacity:.85; margin-bottom:1rem; }
+    header p.blurb { max-width:700px; line-height:1.6; opacity:.9; }
+    .stats { display:flex; justify-content:center; flex-wrap:wrap; gap:2rem; margin-top:2rem;}
+    .stat { background:var(--card); padding:1rem 2rem; border-radius:8px; width:150px; text-align:center;}
+    .stat h3 { margin:0; font-size:1.5rem; }
+    .stat p { margin:0; opacity:.8; font-size:.9rem; }
+    main { max-width:1200px; margin:2rem auto; padding:0 1rem; }
+    section { margin-bottom:3rem; }
+    section h2 { font-size:1.6rem; border-left:4px solid var(--accent); padding-left:.5rem; margin-bottom:1rem; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem; }
+    .card { background:var(--card); border-radius:10px; overflow:hidden; box-shadow:0 4px 8px rgba(0,0,0,.4); transition:transform .2s; cursor:pointer; }
+    .card:hover { transform:translateY(-5px); box-shadow:0 8px 16px rgba(0,0,0,.7); }
+    .card img { width:100%; display:block; }
+    .card-content { padding:1rem; }
+    .card-content h3 { margin:0 0 .5rem; font-size:1.1rem; }
+    .card-content p { opacity:.85; margin:0; font-size:.9rem; }
+    footer { text-align:center; padding:2rem 1rem; font-size:.9rem; opacity:.7; }
+    /* modal */
+    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:200; }
+    .modal iframe { width:90%; max-width:800px; height:60vh; border:none; }
+    .modal .close { position:absolute; top:1rem; right:1rem; font-size:2rem; color:#fff; cursor:pointer; }
   </style>
 </head>
 <body data-theme="dark">
+
+  <nav>
+    <a href="#generalMath">General Math</a>
+    <a href="#higherMath">Higher Math</a>
+    <a href="#physics">Physics</a>
+    <a href="#chemistry">Chemistry</a>
+    <!-- Add remaining nav links -->
+  </nav>
   <button class="toggle" onclick="toggleTheme()">Toggle Theme</button>
+
   <header>
-    <h1>SSC 2026 Online Classes</h1>
-    <p>Your Academic Space. Just Learning.</p>
-    <p>Welcome, SSC 2026 Batch — your dedicated academic space, free from distractions and designed for focused learning by Tahmidul Hasan Sayem...</p>
+    <h1>SSC 2026 Online Classes</h1>
+    <p class="subtitle">Your Academic Space. Just Learning.</p>
+    <p class="blurb">
+      Welcome Dear SSC 2026 Batch – your dedicated academic space… Stay on track. Stay focused. Just learn.
+    </p>
+    <div class="stats">
+      <div class="stat"><h3>22+</h3><p>General Math</p></div>
+      <div class="stat"><h3>16+</h3><p>Higher Math</p></div>
+      <div class="stat"><h3>12</h3><p>Subjects</p></div>
+    </div>
   </header>
+
   <main>
-    <!-- Sections -->
-    <template id="card-template">
-      <div class="card">
-        <a href="" target="_blank"><img src="" alt=""></a>
-        <div class="content"><h3></h3><p></p></div>
-      </div>
+    <template id="cardTpl">
+      <div class="card"><img src="" alt=""><div class="card-content"><h3></h3><p></p></div></div>
     </template>
 
-    <!-- Subjects -->
-    <section id="general-math"><h2>General Math</h2><div class="grid"></div></section>
-    <section id="higher-math"><h2>Higher Math</h2><div class="grid"></div></section>
-    <section id="bangla1"><h2>Bangla 1st Paper</h2><div class="grid"><!-- backend-hook --></div></section>
-    <section id="bangla2"><h2>Bangla 2nd Paper</h2><div class="grid"><!-- backend-hook --></div></section>
-    <section id="english1"><h2>English 1st Paper</h2><div class="grid"><!-- backend-hook --></div></section>
-    <section id="english2"><h2>English 2nd Paper</h2><div class="grid"><!-- backend-hook --></div></section>
-    <section id="physics"><h2>Physics</h2><div class="grid"><!-- backend-hook --></div></section>
-    <section id="chemistry"><h2>Chemistry</h2><div class="grid"><!-- backend-hook --></div></section>
-    <section id="biology"><h2>Biology</h2><div class="grid"><!-- backend-hook --></div></section>
-    <section id="bgs"><h2>Bangladesh & Global Studies</h2><div class="grid"><!-- backend-hook --></div></section>
-    <section id="islam"><h2>Islam & Moral Ethics</h2><div class="grid"><!-- backend-hook --></div></section>
-    <section id="ict"><h2>ICT</h2><div class="grid"><!-- backend-hook --></div></section>
+    <!-- Subject Sections... -->
+    <section id="generalMath"><h2>General Math</h2><div class="grid"></div></section>
+    <section id="higherMath"><h2>Higher Math</h2><div class="grid"></div></section>
+    <!-- 10 empty sections with backend-hook like earlier -->
+    <section id="physics"><h2>Physics</h2><div class="grid"><!-- hook --></div></section>
+    <!-- etc -->
   </main>
-  <footer>© 2025–2026 All Rights Reserved by Tahmidul Hasan Sayem</footer>
+
+  <footer>© 2025–2026 All Rights Reserved by Tahmidul Hasan Sayem</footer>
+
+  <div class="modal" id="videoModal"><span class="close" onclick="closeModal()">×</span><iframe src="" allowfullscreen></iframe></div>
 
   <script>
-    function toggleTheme(){document.body.dataset.theme=document.body.dataset.theme==='dark'?'light':'dark'}
+    function toggleTheme(){
+      document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+    }
+
+    document.addEventListener('click', e => {
+      if (e.target.closest('.card')) {
+        const idx = Array.from(e.target.closest('.card').parentNode.children).indexOf(e.target.closest('.card'));
+        const url = e.target.closest('.card').dataset.url;
+        openModal(url);
+      }
+    });
+
+    function openModal(url){
+      const vid = url.match(/(?:youtu.be\/|v=)([^?&]+)/)[1];
+      document.querySelector('#videoModal iframe').src = https://www.youtube.com/embed/${vid};
+      document.getElementById('videoModal').style.display = 'flex';
+    }
+    function closeModal(){
+      const m = document.getElementById('videoModal');
+      m.style.display='none';
+      m.querySelector('iframe').src='';
+    }
 
     const subjects = {
-      "general-math": [
-        "https://youtu.be/nfwZ7derrr4",
-        // etc… total 22 URLs
-      ],
-      "higher-math": [
-        "https://youtu.be/ERVCTT0vYb4",
-        // etc… total 16 URLs
-      ]
+      generalMath: [/* your 22 urls */],
+      higherMath: [/* your 16 urls */]
     };
 
-    const tpl = document.getElementById('card-template');
-
-    subjects && Object.entries(subjects).forEach(([id, urls])=>{
-      const grid = document.querySelector(#${id} .grid);
-      urls.forEach(url=>{
-        const vid = url.split(/youtu.be\/|v=/)[1].split(/[?&]/)[0];
-        const thumb = https://img.youtube.com/vi/${vid}/hqdefault.jpg;
-        const card = tpl.content.firstElementChild.cloneNode(true);
-        card.querySelector('a').href = https://www.youtube.com/watch?v=${vid};
-        card.querySelector('img').src = thumb;
-        card.querySelector('h3').textContent = Lecture: ${vid};
-        card.querySelector('p').textContent = Topic placeholder;
-        grid.append(card);
-      });
-    });
+    async function load(subject){
+      const container = document.getElementById(subject).querySelector('.grid');
+      for(const url of subjects[subject]){
+        const d = await fetch(https://noembed.com/embed?url=${encodeURIComponent(url)}).then(r=>r.json());
+        const card = document.getElementById('cardTpl').content.cloneNode(true);
+        card.querySelector('img').src = d.thumbnail_url;
+        card.querySelector('h3').textContent = d.title;
+        card.querySelector('p').textContent = d.author_name;
+        card.querySelector('.card').dataset.url = url;
+        container.append(card);
+      }
+    }
+    load('generalMath'); load('higherMath');
   </script>
 </body>
 </html>
+   
+
+   
