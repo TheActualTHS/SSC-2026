@@ -95,7 +95,7 @@
     });
 
     function openModal(url) {
-      const vid = url.match(/(?:youtu\\.be\\/|v=)([^?&]+)/)[1];
+      const vid = url.match(/(?:youtu\.be\/|v=)([^?&]+)/)[1];
       document.querySelector('#modal iframe').src = `https://www.youtube.com/embed/${vid}?autoplay=1`;
       document.querySelector('#modal').style.display = 'flex';
     }
